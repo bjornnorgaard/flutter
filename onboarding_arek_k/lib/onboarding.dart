@@ -1,5 +1,7 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:onboarding_arek_k/onboarding_page.dart';
+import 'package:onboarding_arek_k/styles.dart';
 
 class OnboardingScreen extends StatefulWidget {
   @override
@@ -59,7 +61,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           ),
         ),
         child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 40),
+          padding: const EdgeInsets.only(top: 40),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
@@ -122,67 +124,78 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: _buildPageIndicator(),
               ),
-              _currentPage != _numPages - 1
-                  ? Expanded(
-                      child: Align(
-                        alignment: FractionalOffset.bottomRight,
-                        child: FlatButton(
-                          onPressed: () {
-                            _pageController.nextPage(
-                              duration: Duration(milliseconds: 500),
-                              curve: Curves.ease,
-                            );
-                          },
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center, // TODO: Maybe remove.
-                            mainAxisSize: MainAxisSize.min,
-                            children: <Widget>[
-                              AnimatedOpacity(
-                                duration: Duration(milliseconds: 300),
-                                opacity: _currentPage != _numPages - 1 ? 1 : 0,
-                                child: Text(
-                                  "Next",
-                                  style: TextStyle(
-                                    color: Colors.white70,
-                                    fontSize: 20,
-                                  ),
-                                ),
-                              ),
-                              SizedBox(width: 5),
-                              Icon(
-                                Icons.arrow_forward,
-                                color: Colors.white70,
-                                size: 25,
-                              ),
-                              SizedBox(width: 15),
-                            ],
-                          ),
-                        ),
-                      ),
-                    )
-                  : Text("")
+              Expanded(
+                child: AnimatedCrossFade(
+                  duration: Duration(milliseconds: 300),
+                  crossFadeState:
+                      _currentPage == _numPages - 1 ? CrossFadeState.showSecond : CrossFadeState.showFirst,
+                  firstChild: Center(child: NextButton(pageController: _pageController)),
+                  secondChild: Center(child: Sheet()),
+                ),
+              )
             ],
           ),
         ),
       ),
-      bottomSheet: _currentPage == _numPages -1 ? Container(
-        margin: EdgeInsets.all(10),
-        height: 80,
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(10),
-        ),
-        child: Center(
-          child: Text(
-            "Get started",
-            style: TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
-              color: Color(0xFF5B16D0),
-            ),
+    );
+  }
+}
+
+class Sheet extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.all(10),
+      height: 80,
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(10),
+      ),
+      child: Center(
+        child: Text(
+          "Get started",
+          style: TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+            color: Color(0xFF5B16D0),
           ),
         ),
-      ) : null,
+      ),
+    );
+  }
+}
+
+class NextButton extends StatelessWidget {
+  final PageController pageController;
+
+  NextButton({this.pageController});
+
+  @override
+  Widget build(BuildContext context) {
+    return FlatButton(
+      onPressed: () => pageController.nextPage(
+        duration: Duration(milliseconds: 500),
+        curve: Curves.ease,
+      ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: <Widget>[
+          Text(
+            "Next",
+            style: TextStyle(
+              fontSize: 20,
+              fontFamily: "Raleway",
+              color: Colors.white70,
+            ),
+          ),
+          SizedBox(width: 5),
+          Icon(
+            Icons.arrow_forward,
+            color: Colors.white70,
+          )
+        ],
+      ),
     );
   }
 }
