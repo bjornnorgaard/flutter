@@ -12,130 +12,132 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(
-                  top: 40,
-                  bottom: 30,
-                  left: kleftPadding - 10,
-                  right: krightPadding),
-              child: Row(
-                children: [
-                  MyIconButton(icon: Icons.menu, onTap: () {}),
-                  Spacer(),
-                  MyIconButton(icon: Icons.search, onTap: () {}),
-                  MyIconButton(icon: Icons.alarm, onTap: () {}),
-                ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: kleftPadding),
-              child: Row(
-                children: [
-                  Text(
-                    "What's up, Joy!",
-                    style: TextStyle(
-                        fontSize: 40,
-                        fontWeight: FontWeight.bold,
-                        color: kHeaderColor),
-                  ),
-                ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: kleftPadding, bottom: 20),
-              child: SectionHeader(
-                title: "categories",
-              ),
-            ),
-            SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left: kleftPadding),
-                    child: MyCard(
-                      child: CategorySummary(
-                        taskCount: 40,
-                        typeName: "Business",
-                        color: kPurpleColor,
-                      ),
-                    ),
-                  ),
-                  MyCard(
-                    child: CategorySummary(
-                      taskCount: 18,
-                      typeName: "Personal",
-                      color: kBlueColor,
-                    ),
-                  ),
-                  MyCard(
-                    child: CategorySummary(
-                      taskCount: 7,
-                      typeName: "Other",
-                      color: kGreenColor,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: kleftPadding, bottom: 20),
-              child: SectionHeader(title: "today's tasks"),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(
-                left: kleftPadding,
-                right: krightPadding,
-              ),
-              child: SingleChildScrollView(
-                scrollDirection: Axis.vertical,
-                child: Column(
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(
+                    top: 10,
+                    bottom: 30,
+                    left: kleftPadding - 10,
+                    right: krightPadding),
+                child: Row(
                   children: [
-                    TodoItem(
-                        checked: false,
-                        description: "Daily meeting with the team",
-                        color: kPurpleColor,
-                        onChecked: (value) {
-                          print("Got $value");
-                        }),
-                    TodoItem(
-                        checked: true,
-                        description: "Pay for rent",
-                        color: kBlueColor,
-                        onChecked: (value) {
-                          print("Got $value");
-                        }),
-                    TodoItem(
-                        checked: false,
-                        description: "Check emails",
-                        color: kBlueColor,
-                        onChecked: (value) {
-                          print("Got $value");
-                        }),
-                    TodoItem(
-                        checked: false,
-                        description: "Lunch with Emma",
-                        color: kPurpleColor,
-                        onChecked: (value) {
-                          print("Got $value");
-                        }),
-                    TodoItem(
-                        checked: false,
-                        description: "Meditation",
-                        color: kBlueColor,
-                        onChecked: (value) {
-                          print("Got $value");
-                        }),
+                    MyIconButton(icon: Icons.menu, onTap: () {}),
+                    Spacer(),
+                    MyIconButton(icon: Icons.search, onTap: () {}),
+                    MyIconButton(icon: Icons.alarm, onTap: () {}),
                   ],
                 ),
               ),
-            ),
-          ],
+              Padding(
+                padding: const EdgeInsets.only(left: kleftPadding),
+                child: Row(
+                  children: [
+                    Text(
+                      "What's up, Joy!",
+                      style: TextStyle(
+                          fontSize: 40,
+                          fontWeight: FontWeight.bold,
+                          color: kHeaderColor),
+                    ),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: kleftPadding, bottom: 20),
+                child: SectionHeader(
+                  title: "categories",
+                ),
+              ),
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(left: kleftPadding),
+                      child: MyCard(
+                        child: CategorySummary(
+                          taskCount: 40,
+                          typeName: "Business",
+                          color: kPurpleColor,
+                        ),
+                      ),
+                    ),
+                    MyCard(
+                      child: CategorySummary(
+                        taskCount: 18,
+                        typeName: "Personal",
+                        color: kBlueColor,
+                      ),
+                    ),
+                    MyCard(
+                      child: CategorySummary(
+                        taskCount: 7,
+                        typeName: "Other",
+                        color: kGreenColor,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: kleftPadding, bottom: 20),
+                child: SectionHeader(title: "today's tasks"),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(
+                  left: kleftPadding,
+                  right: krightPadding,
+                ),
+                child: SingleChildScrollView(
+                  scrollDirection: Axis.vertical,
+                  child: Column(
+                    children: [
+                      TodoItem(
+                          checked: false,
+                          description: "Daily meeting with the team",
+                          color: kPurpleColor,
+                          onChecked: (value) {
+                            print("Got $value");
+                          }),
+                      TodoItem(
+                          checked: true,
+                          description: "Pay for rent",
+                          color: kBlueColor,
+                          onChecked: (value) {
+                            print("Got $value");
+                          }),
+                      TodoItem(
+                          checked: false,
+                          description: "Check emails",
+                          color: kBlueColor,
+                          onChecked: (value) {
+                            print("Got $value");
+                          }),
+                      TodoItem(
+                          checked: false,
+                          description: "Lunch with Emma",
+                          color: kPurpleColor,
+                          onChecked: (value) {
+                            print("Got $value");
+                          }),
+                      TodoItem(
+                          checked: false,
+                          description: "Meditation",
+                          color: kBlueColor,
+                          onChecked: (value) {
+                            print("Got $value");
+                          }),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

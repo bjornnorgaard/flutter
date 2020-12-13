@@ -8,8 +8,8 @@ import 'screens/home/home_page.dart';
 void main() {
   SystemChrome.setSystemUIOverlayStyle(
     SystemUiOverlayStyle(
-      statusBarColor: Colors.transparent,
-      systemNavigationBarColor: Colors.transparent,
+      statusBarColor: Colors.grey.withOpacity(0.5),
+      //systemNavigationBarColor: Colors.grey.withOpacity(0.5),
     ),
   );
 
