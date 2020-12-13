@@ -47,7 +47,7 @@ class HomePage extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(left: kleftPadding, bottom: 20),
+                padding: const EdgeInsets.only(left: kleftPadding, bottom: 10),
                 child: SectionHeader(
                   title: "categories",
                 ),
@@ -85,7 +85,7 @@ class HomePage extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(left: kleftPadding, bottom: 20),
+                padding: const EdgeInsets.only(left: kleftPadding, bottom: 10),
                 child: SectionHeader(title: "today's tasks"),
               ),
               Padding(
