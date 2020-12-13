@@ -175,7 +175,7 @@ class _TodoItemState extends State<TodoItem> {
   Widget build(BuildContext context) {
     return MyCard(
       child: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(4.0),
         child: Row(
           children: [
             RoundCheckbox(
